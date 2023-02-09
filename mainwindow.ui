@@ -1895,6 +1895,24 @@ background-color: rgb(211, 215, 207);</string>
        <attribute name="title">
         <string>OPTIONS      </string>
        </attribute>
+       <widget class="QPushButton" name="pushButton_9">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>50</y>
+          <width>271</width>
+          <height>81</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>20</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>SEND ROUTE TO HCD</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="tab_keypad">
        <attribute name="title">

@@ -463,6 +463,7 @@ private:
     QTcpSocket *pjsipSocket;
     QTcpSocket *ccVolSocket;
     QTcpSocket *etbCallSocket;
+    QTcpSocket *hcdRouteSocket;
 
     QTimer* callTimer;
     int callTimeCtr;
