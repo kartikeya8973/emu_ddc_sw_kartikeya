@@ -427,7 +427,7 @@ void MainWindow::pjsip_ready_read()
 
         //Sending String to START CCTV Feed on HMI
         etbCallSocket = new QTcpSocket();
-        etbCallSocket->connectToHost("192.168.1.72",1999);
+        etbCallSocket->connectToHost("192.168.1.70",1999);
         if(etbCallSocket->waitForConnected(3000))
         {
             QString msg = "ST:";
@@ -5388,7 +5388,7 @@ void MainWindow::on_pushButton_9_clicked()
 {
     //Sending Route to HCD
     hcdRouteSocket = new QTcpSocket();
-    hcdRouteSocket->connectToHost("192.168.1.111",1000);
+    hcdRouteSocket->connectToHost("192.168.1.115",1000);
     if(hcdRouteSocket->waitForConnected(3000))
     {
 
@@ -5548,6 +5548,7 @@ void MainWindow::on_pushButton_call_pick_clicked()
             QString msg = "a";
             pjsipSocket->write(msg.toLocal8Bit());
             ui->label_call_status->setText("Call Picked");
+
             callTimeCtr=0;
             callTimer->start(1000);
         }
@@ -5583,6 +5584,7 @@ void MainWindow::on_pushButton_call_reject_clicked()
         {
             callTimer->stop();
         }
+
     }
     else
     {
@@ -5591,18 +5593,25 @@ void MainWindow::on_pushButton_call_reject_clicked()
 
     pjsipSocket->disconnect();
     pjsipSocket->close();
+//    QString sendRec2Hmi = "sshpass -p 'hmi@root' scp /home/root/rec_* hmi@192.168.1.70:/home/hmi/ETBArchives";
+//    system(qPrintable(sendRec2Hmi));
+
+//    QString moveRecFile = "mv /home/root/rec_* /home/root/arec";
+//    system(qPrintable(moveRecFile));
+
+
 
     //Sending String to STOP CCTV Feed on HMI
-    etbCallSocket = new QTcpSocket();
-    etbCallSocket->connectToHost("192.168.1.72",1999);
-    if(etbCallSocket->waitForConnected(3000))
-    {
-        QString msg = "EN:";
-        etbCallSocket->write(msg.toLocal8Bit());
-    }
+//    etbCallSocket = new QTcpSocket();
+//    etbCallSocket->connectToHost("192.168.1.70",1999);
+//    if(etbCallSocket->waitForConnected(3000))
+//    {
+//        QString msg = "EN:";
+//        etbCallSocket->write(msg.toLocal8Bit());
+//    }
 
-    etbCallSocket->disconnect();
-    etbCallSocket->close();
+//    etbCallSocket->disconnect();
+//    etbCallSocket->close();
 }
 
 void MainWindow::callTimerTimeout()
